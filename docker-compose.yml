@@ -1,13 +1,16 @@
 
-version: "3.7"
+version: "3.8"
 services:
   app:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     container_name: new-app
     working_dir: /src
     volumes: 
       - '.:/src'
+      - /app/node_modules
     restart: always
     ports:
-      - 8080:8080
+      - 3003:3003
     command: /bin/sh -c "yarn start"
